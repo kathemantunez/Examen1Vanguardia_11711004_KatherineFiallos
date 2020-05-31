@@ -5,6 +5,9 @@
  */
 package examenvanguardia_11711004;
 
+import Factory.Computer;
+import Factory.ComputerFactory;
+import Factory.ComputerType;
 import Singleton.UsuarioUnico;
 
 /**
@@ -37,7 +40,13 @@ public class ExamenVanguardia_11711004 {
         System.out.println(u2.getNombre());
     }
     public static void factory(){
-        
+        ComputerFactory factory=new ComputerFactory();
+        Computer c1=factory.buildComputer(ComputerType.ASUS);
+        System.out.println(c1.getModel()+" computadora creada exitosamente");
+        Computer c2=factory.buildComputer(ComputerType.DELL);
+        System.out.println(c2.getModel()+" computadora creada exitosamente");
+        Computer c3=factory.buildComputer(ComputerType.HP);
+        System.out.println(c3.getModel()+" computadora creada exitosamente");
     }
     
 }
