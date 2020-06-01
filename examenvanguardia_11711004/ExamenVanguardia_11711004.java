@@ -5,6 +5,11 @@
  */
 package examenvanguardia_11711004;
 
+import Builder.Casa;
+import Builder.CasaBuilder;
+import Builder.CasaCampoBuilder;
+import Builder.CasaCiudadBuilder;
+import Builder.CasaDirector;
 import Factory.Computer;
 import Factory.ComputerFactory;
 import Factory.ComputerType;
@@ -33,6 +38,9 @@ public class ExamenVanguardia_11711004 {
         System.out.println("----------------------------------------");
         System.out.println("---------------OBSERVER-----------------");
         observer();
+        System.out.println("----------------------------------------");
+        System.out.println("---------------BUILDER------------------");
+        Builder();
         
     }
     public static void singleton(){
@@ -66,12 +74,34 @@ public class ExamenVanguardia_11711004 {
       maestro.registerObserver(a4);
       
       maestro.removeObserver(a3);
-      System.out.println("Asigancion 1, notificar a:");
+      System.out.println("Asiganción 1, notificar a:");
       maestro.addTareas("Tarea de patrones de diseño");
-      System.out.println("Asigancion 2, notificar a:");
+      System.out.println("Asiganción 2, notificar a:");
       maestro.addTareas("Proyecto");
-      System.out.println("Asigancion 3, notificar a:");
+      System.out.println("Asiganción 3, notificar a:");
       maestro.addTareas("examen");
     }
+
+    private static void Builder() {
+        CasaDirector director=new CasaDirector();
+        
+        CasaBuilder casaCampo=new CasaCampoBuilder();
+        CasaBuilder casaCiudad=new CasaCiudadBuilder();
+        
+        director.setCasaBuilder(casaCampo);
+        director.buildCasa();
+        Casa casa1=director.getCasaBuilder();
+        System.out.println("Casa Campo");
+        System.out.println(casa1.toString());
+        
+        director.setCasaBuilder(casaCiudad);
+        director.buildCasa();
+        Casa casa2=director.getCasaBuilder();
+        System.out.println("Casa Ciudad");
+        System.out.println(casa2.toString());
+        
+        
+        
+     }
     
 }
