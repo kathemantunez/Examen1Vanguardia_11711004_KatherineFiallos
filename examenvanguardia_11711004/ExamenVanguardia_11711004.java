@@ -20,6 +20,10 @@ import Factory.ComputerType;
 import Observer.Alumno;
 import Observer.Maestro;
 import Singleton.UsuarioUnico;
+import State.ApagadoState;
+import State.AutoContext;
+import State.detenidoState;
+import State.enMarchaSate;
 
 /**
  *
@@ -48,6 +52,9 @@ public class ExamenVanguardia_11711004 {
         System.out.println("----------------------------------------");
         System.out.println("---------------ADAPTER------------------");
         Adapter();
+        System.out.println("----------------------------------------");
+        System.out.println("---------------STATE--------------------");
+        state();
         
     }
     public static void singleton(){
@@ -122,6 +129,22 @@ public class ExamenVanguardia_11711004 {
         VelaAdapter adapter= new VelaAdapter(new Vela("vela"),"vela");
         adapter.encender("vela");
         adapter.apagar("vela");
+    }
+
+    private static void state() {
+        AutoContext a=new AutoContext();
+        System.out.println("Estado del auto apagado, estas son sus opciones: ");
+        a.setState(new ApagadoState());
+        a.action();
+        
+        System.out.println("Estado del auto en marcha, estas son sus opciones: ");
+        a.setState(new enMarchaSate());
+        a.action();
+        
+        System.out.println("Estado del auto detenido, estas son sus opciones: ");
+        a.setState(new detenidoState());
+        a.action();
+    
     }
     
 }
