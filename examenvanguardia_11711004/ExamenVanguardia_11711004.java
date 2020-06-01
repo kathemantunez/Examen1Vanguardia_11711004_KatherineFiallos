@@ -5,6 +5,10 @@
  */
 package examenvanguardia_11711004;
 
+import Adapter.Bombillo;
+import Adapter.Linterna;
+import Adapter.Vela;
+import Adapter.VelaAdapter;
 import Builder.Casa;
 import Builder.CasaBuilder;
 import Builder.CasaCampoBuilder;
@@ -41,6 +45,9 @@ public class ExamenVanguardia_11711004 {
         System.out.println("----------------------------------------");
         System.out.println("---------------BUILDER------------------");
         Builder();
+        System.out.println("----------------------------------------");
+        System.out.println("---------------ADAPTER------------------");
+        Adapter();
         
     }
     public static void singleton(){
@@ -103,5 +110,18 @@ public class ExamenVanguardia_11711004 {
         
         
      }
+
+    private static void Adapter() {
+        Bombillo b=new Bombillo("bombillo");
+        b.encender("bombillo");
+        b.apagar("bombillo");
+        Linterna l=new Linterna("linterna");
+        l.encender("linterna");
+        l.apagar("linterna");
+        
+        VelaAdapter adapter= new VelaAdapter(new Vela("vela"),"vela");
+        adapter.encender("vela");
+        adapter.apagar("vela");
+    }
     
 }
